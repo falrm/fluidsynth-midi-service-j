@@ -9,7 +9,6 @@ jobs:
     environment:
       JVM_OPTS: -Xmx3200m
     steps:
-      - run: sudo apt-get update
       - run:
           name: Install dependencies
           command: sudo apt-get update && sudo apt-get install autotools-dev automake autoconf libtool g++ autopoint make cmake
@@ -25,19 +24,19 @@ jobs:
       - run:
           name: Checkout submodules
           command: git submodule update --init --recursive
-      - restore_cache:
-          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
 #      - run:
 #         name: Chmod permissions #if permission for Gradlew Dependencies fail, use this.
 #         command: sudo chmod +x ./gradlew
-      - run:
-          name: Build JNAerator
-          working_directory: external/JNAerator
-          command: mvn package
+#      - run:
+#          name: Build JNAerator
+#          working_directory: external/JNAerator
+#          command: mvn package
       - run:
           name: Build fluidsynthjna
           working_directory: fluidsynthjna
           command: make prepare-fluidsynth && make
+      - restore_cache:
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies
