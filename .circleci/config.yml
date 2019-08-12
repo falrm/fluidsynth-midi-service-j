@@ -18,7 +18,7 @@ jobs:
           debhelper build-essential devscripts fakeroot transfig gperf libdbus-glib-1-dev
           wget glib-networking libxtst-dev libxrandr-dev libglu1-mesa-dev libegl1-mesa-dev
           git subversion xutils-dev intltool ccache python3-setuptools autogen
-      - install_ndk
+      - install-ndk
       - checkout
       - restore_cache:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
