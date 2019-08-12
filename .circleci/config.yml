@@ -10,6 +10,10 @@ jobs:
       JVM_OPTS: -Xmx3200m
     steps:
       - run:
+          name: Git nonsense
+          command: git config --global user.email "ci@beatscratch.io" && git config --global user.name "CI testing"
+
+      - run:
           name: Install dependencies
           command: sudo apt-get update && sudo apt-get install autotools-dev automake autoconf libtool g++ autopoint make cmake
                    bison flex yasm pkg-config gtk-doc-tools libxv-dev libx11-dev libpulse-dev
