@@ -20,6 +20,7 @@ jobs:
           git subversion xutils-dev intltool ccache python3-setuptools autogen
 #      - install-ndk
       - checkout
+      - run: git submodule update --init --recursive
       - restore_cache:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
 #      - run:
