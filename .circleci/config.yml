@@ -31,10 +31,15 @@ jobs:
 #          name: Build JNAerator
 #          working_directory: external/JNAerator
 #          command: mvn package
+
+      - run:
+          name: Prepare fluidsynthjna
+          working_directory: fluidsynthjna
+          command: make prepare-fluidsynth
       - run:
           name: Build fluidsynthjna
           working_directory: fluidsynthjna
-          command: make prepare-fluidsynth && make
+          command: make
       - restore_cache:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
