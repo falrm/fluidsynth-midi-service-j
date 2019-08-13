@@ -25,14 +25,14 @@ jobs:
             chmod +x /opt/android/android-ndk-r18b/toolchains/x86_64-4.9/prebuilt/linux-x86_64/bin/*
             chmod +x /opt/android/android-ndk-r18b/toolchains/x86-4.9/prebuilt/linux-x86_64/bin/*
             chmod +x /opt/android/android-ndk-r18b/toolchains/renderscript/prebuilt/linux-x86_64/bin/*
-            echo "export PATH=/opt/android/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin:$PATH" >> $BASH_ENV
-            echo "export PATH=/opt/android/android-ndk-r18b/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin:$PATH" >> $BASH_ENV
-            echo "export PATH=/opt/android/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin:$PATH" >> $BASH_ENV
-            echo "export PATH=/opt/android/android-ndk-r18b/toolchains/x86_64-4.9/prebuilt/linux-x86_64/bin:$PATH" >> $BASH_ENV
-            echo "export PATH=/opt/android/android-ndk-r18b/toolchains/x86-4.9/prebuilt/linux-x86_64/bin:$PATH" >> $BASH_ENV
-            echo "export PATH=/opt/android/android-ndk-r18b/toolchains/renderscript/prebuilt/linux-x86_64/bin:$PATH" >> $BASH_ENV
+            echo "export PATH=/opt/android/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin:$PATH" >> ~/.bashrc
+            echo "export PATH=/opt/android/android-ndk-r18b/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin:$PATH" >> ~/.bashrc
+            echo "export PATH=/opt/android/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin:$PATH" >> ~/.bashrc
+            echo "export PATH=/opt/android/android-ndk-r18b/toolchains/x86_64-4.9/prebuilt/linux-x86_64/bin:$PATH" >> ~/.bashrc
+            echo "export PATH=/opt/android/android-ndk-r18b/toolchains/x86-4.9/prebuilt/linux-x86_64/bin:$PATH" >> ~/.bashrc
+            echo "export PATH=/opt/android/android-ndk-r18b/toolchains/renderscript/prebuilt/linux-x86_64/bin:$PATH" >> ~/.bashrc
             ls /opt/android/android-ndk-r18b/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin
-
+            arm-linux-androideabi-ar
       - run:
           name: Test path
           command: |
