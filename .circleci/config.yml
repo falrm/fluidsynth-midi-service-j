@@ -32,23 +32,20 @@ jobs:
 #          name: Build JNAerator
 #          working_directory: external/JNAerator
 #          command: mvn package
-
-      - run:
-          name: Prepare fluidsynthjna
-          working_directory: fluidsynthjna
-          command: make prepare-fluidsynth
       - run:
           name: Get custom CMake
           command: git clone https://github.com/Kitware/CMake.git --depth 1 -b v3.14.3 cmake &&
             cd cmake && mkdir build && cd build && cmake .. && make && cd ../..
       - run:
-          name: Setup CMake PATH
-          command: |
-            echo "export PATH=`pwd`/cmake/build/bin:$PATH" >> $BASH_ENV
+          name: Prepare fluidsynthjna
+          working_directory: fluidsynthjna
+          command: make prepare-fluidsynth
       - run:
           name: Build fluidsynthjna
           working_directory: fluidsynthjna
-          command: make
+          command: |
+            echo "export PATH=`pwd`/cmake/build/bin:$PATH" >> $BASH_ENV
+            make
       - run:
           name: Zip jniLibs
           working_directory: fluidsynthjna/src/main
