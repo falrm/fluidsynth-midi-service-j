@@ -78,6 +78,7 @@ jobs:
             echo "export PATH=/opt/android/android-ndk-r18b/toolchains/x86_64-4.9/prebuilt/linux-x86_64/bin:$PATH" >> $BASH_ENV
             echo "export PATH=/opt/android/android-ndk-r18b/toolchains/x86-4.9/prebuilt/linux-x86_64/bin:$PATH" >> $BASH_ENV
             echo "export PATH=/opt/android/android-ndk-r18b/toolchains/renderscript/prebuilt/linux-x86_64/bin:$PATH" >> $BASH_ENV
+            ls /opt/android/android-ndk-r18b/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin
             make
       - run:
           name: Zip jniLibs
