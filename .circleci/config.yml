@@ -29,9 +29,6 @@ jobs:
           name: Checkout submodules
           command: git submodule update --init --recursive
 #      - run:
-#         name: Chmod permissions #if permission for Gradlew Dependencies fail, use this.
-#         command: sudo chmod +x ./gradlew
-#      - run:
 #          name: Build JNAerator
 #          working_directory: external/JNAerator
 #          command: mvn package
@@ -46,10 +43,10 @@ jobs:
           command: make
       - run:
           name: Zip jniLibs
-          working_directory: fluidsynthjna
-          command: zip -r jniLibs.zip src/main/jniLibs
+          working_directory: fluidsynthjna/src/main
+          command: zip -r jniLibs.zip jniLibs
       - store_artifacts:
-          path: fluidsynthjna/jniLibs.zip
+          path: fluidsynthjna/src/main/jniLibs.zip
           destination: jniLibs.zip
       - restore_cache:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
