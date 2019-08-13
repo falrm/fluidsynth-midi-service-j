@@ -28,6 +28,19 @@ jobs:
           ndk-sha: 500679655da3a86aecf67007e8ab230ea9b4dd7b
       - run: ls -R /opt/android
       - run:
+          name: Test path
+          command: |
+            echo "export PATH=/opt/android/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin:$PATH" >> $BASH_ENV
+            echo "export PATH=/opt/android/android-ndk-r18b/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin:$PATH" >> $BASH_ENV
+            echo "export PATH=/opt/android/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin:$PATH" >> $BASH_ENV
+            echo "export PATH=/opt/android/android-ndk-r18b/toolchains/mips64el-linux-android-4.9/prebuilt/linux-x86_64/bin:$PATH" >> $BASH_ENV
+            echo "export PATH=/opt/android/android-ndk-r18b/toolchains/mipsel-linux-android-4.9/prebuilt/linux-x86_64/bin:$PATH" >> $BASH_ENV
+            echo "export PATH=/opt/android/android-ndk-r18b/toolchains/x86_64-4.9/prebuilt/linux-x86_64/bin:$PATH" >> $BASH_ENV
+            echo "export PATH=/opt/android/android-ndk-r18b/toolchains/x86-4.9/prebuilt/linux-x86_64/bin:$PATH" >> $BASH_ENV
+            echo "export PATH=/opt/android/android-ndk-r18b/toolchains/renderscript/prebuilt/linux-x86_64/bin:$PATH" >> $BASH_ENV
+            arm-linux-androideabi-ar
+
+      - run:
           name: Clone submodules
           command: git submodule update --init --recursive
       - run:
@@ -47,7 +60,7 @@ jobs:
           command: git clone https://github.com/Kitware/CMake.git --depth 1 -b v3.14.3 cmake &&
             cd cmake && mkdir build && cd build && cmake .. && make && cd ../..
       - run:
-          name: Prepare fluidsynthjna
+          name: Prepare FluidSynth
           working_directory: fluidsynthjna
           command: make prepare-fluidsynth
       - run:
