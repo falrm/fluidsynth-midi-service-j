@@ -36,6 +36,7 @@ jobs:
       - run:
           name: Test path
           command: |
+            echo $PATH
             arm-linux-androideabi-ar
       - run:
           name: Install FluidSynth build dependencies
