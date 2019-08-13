@@ -10,7 +10,7 @@ jobs:
       JVM_OPTS: -Xmx3200m
     steps:
       - run:
-          name: Git nonsense
+          name: Git nonsense for Cerbero
           command: git config --global user.email "ci@beatscratch.io" && git config --global user.name "CI testing"
       - android/install-ndk:
           ndk-version: android-ndk-r18b
@@ -31,8 +31,9 @@ jobs:
             PATH: /opt/android/sdk/emulator:/opt/android/sdk/tools:/opt/android/sdk/tools/bin:/opt/android/sdk/platform-tools:/home/circleci/.rubies/ruby-2.6.1/bin:/usr/local/openjdk-8/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/android/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin:/opt/android/android-ndk-r18b/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin:/opt/android/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin:/opt/android/android-ndk-r18b/toolchains/x86_64-4.9/prebuilt/linux-x86_64/bin:/opt/android/android-ndk-r18b/toolchains/x86-4.9/prebuilt/linux-x86_64/bin:/opt/android/android-ndk-r18b/toolchains/renderscript/prebuilt/linux-x86_64/bin
           command: |
             echo $PATH
+            pwd
             ls /opt/android/android-ndk-r18b/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin
-            arm-linux-androideabi-ar
+            arm-linux-androideabi-ar -h
       - run:
           name: Install FluidSynth build dependencies
           command: sudo apt-get update && sudo apt-get install autotools-dev automake autoconf libtool g++ autopoint make cmake
