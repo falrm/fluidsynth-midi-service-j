@@ -45,6 +45,14 @@ jobs:
           working_directory: fluidsynthjna
           command: |
             echo "export PATH=`pwd`/cmake/build/bin:$PATH" >> $BASH_ENV
+            echo "export PATH=/opt/android/android-ndk-r17b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/:$PATH" >> $BASH_ENV
+            echo "export PATH=/opt/android/android-ndk-r17b/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin/:$PATH" >> $BASH_ENV
+            echo "export PATH=/opt/android/android-ndk-r17b/toolchains/llvm/prebuilt/linux-x86_64/bin/:$PATH" >> $BASH_ENV
+            echo "export PATH=/opt/android/android-ndk-r17b/toolchains/mips64el-linux-android-4.9/prebuilt/linux-x86_64/bin/:$PATH" >> $BASH_ENV
+            echo "export PATH=/opt/android/android-ndk-r17b/toolchains/mipsel-linux-android-4.9/prebuilt/linux-x86_64/bin/:$PATH" >> $BASH_ENV
+            echo "export PATH=/opt/android/android-ndk-r17b/toolchains/x86_64-4.9/prebuilt/linux-x86_64/bin/:$PATH" >> $BASH_ENV
+            echo "export PATH=/opt/android/android-ndk-r17b/toolchains/x86-4.9/prebuilt/linux-x86_64/bin/:$PATH" >> $BASH_ENV
+            echo "export PATH=/opt/android/android-ndk-r17b/toolchains/renderscript/prebuilt/linux-x86_64/bin/:$PATH" >> $BASH_ENV
             make
       - run:
           name: Zip jniLibs
