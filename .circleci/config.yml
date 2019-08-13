@@ -17,24 +17,9 @@ jobs:
           ndk-sha: 500679655da3a86aecf67007e8ab230ea9b4dd7b
       - run: ls -R /opt/android
       - run:
-          name: Setup path
-          command: |
-            chmod +x /opt/android/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/*
-            chmod +x /opt/android/android-ndk-r18b/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin/*
-            chmod +x /opt/android/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/*
-            chmod +x /opt/android/android-ndk-r18b/toolchains/x86_64-4.9/prebuilt/linux-x86_64/bin/*
-            chmod +x /opt/android/android-ndk-r18b/toolchains/x86-4.9/prebuilt/linux-x86_64/bin/*
-            chmod +x /opt/android/android-ndk-r18b/toolchains/renderscript/prebuilt/linux-x86_64/bin/*
-            echo "export PATH=/opt/android/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin:$PATH" >> ~/.bashrc
-            echo "export PATH=/opt/android/android-ndk-r18b/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin:$PATH" >> ~/.bashrc
-            echo "export PATH=/opt/android/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin:$PATH" >> ~/.bashrc
-            echo "export PATH=/opt/android/android-ndk-r18b/toolchains/x86_64-4.9/prebuilt/linux-x86_64/bin:$PATH" >> ~/.bashrc
-            echo "export PATH=/opt/android/android-ndk-r18b/toolchains/x86-4.9/prebuilt/linux-x86_64/bin:$PATH" >> ~/.bashrc
-            echo "export PATH=/opt/android/android-ndk-r18b/toolchains/renderscript/prebuilt/linux-x86_64/bin:$PATH" >> ~/.bashrc
-            ls /opt/android/android-ndk-r18b/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin
-#            arm-linux-androideabi-ar
-      - run:
           name: Test path
+          environment:
+            PATH: /opt/android/sdk/emulator:/opt/android/sdk/tools:/opt/android/sdk/tools/bin:/opt/android/sdk/platform-tools:/home/circleci/.rubies/ruby-2.6.1/bin:/usr/local/openjdk-8/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/android/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin:/opt/android/android-ndk-r18b/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin:/opt/android/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin:/opt/android/android-ndk-r18b/toolchains/x86_64-4.9/prebuilt/linux-x86_64/bin:/opt/android/android-ndk-r18b/toolchains/x86-4.9/prebuilt/linux-x86_64/bin:/opt/android/android-ndk-r18b/toolchains/renderscript/prebuilt/linux-x86_64/bin
           command: |
             echo $PATH
             arm-linux-androideabi-ar
@@ -75,14 +60,9 @@ jobs:
       - run:
           name: Build fluidsynthjna
           working_directory: fluidsynthjna
+          environment:
+            PATH: /opt/android/sdk/emulator:/opt/android/sdk/tools:/opt/android/sdk/tools/bin:/opt/android/sdk/platform-tools:/home/circleci/.rubies/ruby-2.6.1/bin:/usr/local/openjdk-8/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/android/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin:/opt/android/android-ndk-r18b/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin:/opt/android/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin:/opt/android/android-ndk-r18b/toolchains/x86_64-4.9/prebuilt/linux-x86_64/bin:/opt/android/android-ndk-r18b/toolchains/x86-4.9/prebuilt/linux-x86_64/bin:/opt/android/android-ndk-r18b/toolchains/renderscript/prebuilt/linux-x86_64/bin
           command: |
-            echo "export PATH=`pwd`/cmake/build/bin:$PATH" >> $BASH_ENV
-            echo "export PATH=/opt/android/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin:$PATH" >> $BASH_ENV
-            echo "export PATH=/opt/android/android-ndk-r18b/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin:$PATH" >> $BASH_ENV
-            echo "export PATH=/opt/android/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin:$PATH" >> $BASH_ENV
-            echo "export PATH=/opt/android/android-ndk-r18b/toolchains/x86_64-4.9/prebuilt/linux-x86_64/bin:$PATH" >> $BASH_ENV
-            echo "export PATH=/opt/android/android-ndk-r18b/toolchains/x86-4.9/prebuilt/linux-x86_64/bin:$PATH" >> $BASH_ENV
-            echo "export PATH=/opt/android/android-ndk-r18b/toolchains/renderscript/prebuilt/linux-x86_64/bin:$PATH" >> $BASH_ENV
             make
       - run:
           name: Zip jniLibs
