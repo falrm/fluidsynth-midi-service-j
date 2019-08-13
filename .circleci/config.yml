@@ -32,7 +32,7 @@ jobs:
             echo "export PATH=/opt/android/android-ndk-r18b/toolchains/x86-4.9/prebuilt/linux-x86_64/bin:$PATH" >> ~/.bashrc
             echo "export PATH=/opt/android/android-ndk-r18b/toolchains/renderscript/prebuilt/linux-x86_64/bin:$PATH" >> ~/.bashrc
             ls /opt/android/android-ndk-r18b/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin
-            arm-linux-androideabi-ar
+#            arm-linux-androideabi-ar
       - run:
           name: Test path
           command: |
