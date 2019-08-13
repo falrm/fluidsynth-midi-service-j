@@ -44,9 +44,13 @@ jobs:
           name: Build fluidsynthjna
           working_directory: fluidsynthjna
           command: make
+      - run:
+          name: Zip jniLibs
+          working_directory: fluidsynthjna
+          command: zip -r jniLibs.zip src/main/jniLibs
       - store_artifacts:
-          path: fluidsynthjna/src/main/jniLibs
-          destination: jniLibs
+          path: fluidsynthjna/jniLibs.zip
+          destination: jniLibs.zip
       - restore_cache:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
