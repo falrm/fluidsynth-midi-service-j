@@ -15,6 +15,12 @@ jobs:
       - android/install-ndk:
           ndk-version: android-ndk-r18b
           ndk-sha: 500679655da3a86aecf67007e8ab230ea9b4dd7b
+      - run:
+          name: Get custom CMake
+          command: |
+            git clone https://github.com/Kitware/CMake.git --depth 1 -b v3.14.3 cmake
+            cd cmake && mkdir build && cd build
+            cmake .. && make && cd ../..
 #      - run: ls -R /opt/android
 #      - run:
 #          name: Setup path
@@ -60,10 +66,6 @@ jobs:
 #          name: Build JNAerator
 #          working_directory: external/JNAerator
 #          command: mvn package
-#      - run:
-#          name: Get custom CMake
-#          command: git clone https://github.com/Kitware/CMake.git --depth 1 -b v3.14.3 cmake &&
-#            cd cmake && mkdir build && cd build && cmake .. && make && cd ../..
       - run:
           name: Prepare FluidSynth
           working_directory: fluidsynthjna
@@ -72,7 +74,7 @@ jobs:
           name: Build fluidsynthjna
           working_directory: fluidsynthjna
           environment:
-            PATH: /opt/android/sdk/emulator:/opt/android/sdk/tools:/opt/android/sdk/tools/bin:/opt/android/sdk/platform-tools:/home/circleci/.rubies/ruby-2.6.1/bin:/usr/local/openjdk-8/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/android/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin:/opt/android/android-ndk-r18b/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin:/opt/android/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin:/opt/android/android-ndk-r18b/toolchains/x86_64-4.9/prebuilt/linux-x86_64/bin:/opt/android/android-ndk-r18b/toolchains/x86-4.9/prebuilt/linux-x86_64/bin:/opt/android/android-ndk-r18b/toolchains/renderscript/prebuilt/linux-x86_64/bin
+            PATH: /home/circleci/code/cmake/build/bin:/opt/android/sdk/emulator:/opt/android/sdk/tools:/opt/android/sdk/tools/bin:/opt/android/sdk/platform-tools:/home/circleci/.rubies/ruby-2.6.1/bin:/usr/local/openjdk-8/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/android/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin:/opt/android/android-ndk-r18b/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin:/opt/android/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin:/opt/android/android-ndk-r18b/toolchains/x86_64-4.9/prebuilt/linux-x86_64/bin:/opt/android/android-ndk-r18b/toolchains/x86-4.9/prebuilt/linux-x86_64/bin:/opt/android/android-ndk-r18b/toolchains/renderscript/prebuilt/linux-x86_64/bin
           command: |
             make
       - run:
