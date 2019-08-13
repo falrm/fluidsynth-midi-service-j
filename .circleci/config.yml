@@ -12,7 +12,6 @@ jobs:
       - run:
           name: Git nonsense
           command: git config --global user.email "ci@beatscratch.io" && git config --global user.name "CI testing"
-
       - run:
           name: Install dependencies
           command: sudo apt-get update && sudo apt-get install autotools-dev automake autoconf libtool g++ autopoint make cmake
@@ -26,8 +25,16 @@ jobs:
 #      - install-ndk
       - checkout
       - run:
-          name: Checkout submodules
+          name: Clone submodules
           command: git submodule update --init --recursive
+      - run:
+          name: Set FluidSynth commit
+          working_directory: external/fluidsynth
+          command: git checkout 90c5eb05c1228471e49be7a73f22a99ef9d35460
+      - run:
+          name: Set JNAerator commit
+          working_directory: external/JNAerator
+          command: git checkout ac73c9e491b7211f2e1278fb4a7c6cedd46f0cf5
 #      - run:
 #          name: Build JNAerator
 #          working_directory: external/JNAerator
