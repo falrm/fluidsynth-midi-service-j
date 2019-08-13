@@ -26,6 +26,7 @@ jobs:
       - android/install-ndk:
           ndk-version: android-ndk-r18b
           ndk-sha: 500679655da3a86aecf67007e8ab230ea9b4dd7b
+      - run: ls -r /opt/android
       - run:
           name: Clone submodules
           command: git submodule update --init --recursive
