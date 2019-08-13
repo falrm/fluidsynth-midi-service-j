@@ -24,7 +24,7 @@ jobs:
                    git subversion xutils-dev intltool ccache python3-setuptools autogen maven
       - checkout
       - install-ndk
-          ndk-version: android-ndk-r18b
+#          ndk-version: android-ndk-r18b
       - run:
           name: Clone submodules
           command: git submodule update --init --recursive
