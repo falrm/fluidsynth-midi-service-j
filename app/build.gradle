@@ -27,6 +27,7 @@ android {
     }
     // FIXME: make it conditional, strip for release builds
     packagingOptions {
+        doNotStrip "*/arm64-v8a/libfluidsynth*.so"
         doNotStrip "*/armeabi/libfluidsynth*.so"
         doNotStrip "*/armeabi-v7a/libfluidsynth*.so"
         doNotStrip "*/x86/libfluidsynth*.so"
