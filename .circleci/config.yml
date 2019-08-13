@@ -16,15 +16,15 @@ jobs:
           ndk-version: android-ndk-r18b
           ndk-sha: 500679655da3a86aecf67007e8ab230ea9b4dd7b
 #      - run: ls -R /opt/android
-      - run:
-          name: Setup path
-          command: |
-            chmod +x /opt/android/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/*
-            chmod +x /opt/android/android-ndk-r18b/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin/*
-            chmod +x /opt/android/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/*
-            chmod +x /opt/android/android-ndk-r18b/toolchains/x86_64-4.9/prebuilt/linux-x86_64/bin/*
-            chmod +x /opt/android/android-ndk-r18b/toolchains/x86-4.9/prebuilt/linux-x86_64/bin/*
-            chmod +x /opt/android/android-ndk-r18b/toolchains/renderscript/prebuilt/linux-x86_64/bin/*
+#      - run:
+#          name: Setup path
+#          command: |
+#            chmod +x /opt/android/android-ndk-r18b/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/*
+#            chmod +x /opt/android/android-ndk-r18b/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin/*
+#            chmod +x /opt/android/android-ndk-r18b/toolchains/llvm/prebuilt/linux-x86_64/bin/*
+#            chmod +x /opt/android/android-ndk-r18b/toolchains/x86_64-4.9/prebuilt/linux-x86_64/bin/*
+#            chmod +x /opt/android/android-ndk-r18b/toolchains/x86-4.9/prebuilt/linux-x86_64/bin/*
+#            chmod +x /opt/android/android-ndk-r18b/toolchains/renderscript/prebuilt/linux-x86_64/bin/*
 #      - run:
 #          name: Test path
 #          environment:
