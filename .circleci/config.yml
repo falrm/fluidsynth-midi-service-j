@@ -44,6 +44,9 @@ jobs:
           name: Build fluidsynthjna
           working_directory: fluidsynthjna
           command: make
+      - store_artifacts:
+          path: fluidsynthjna/src/main/jniLibs
+          destination: jniLibs
       - restore_cache:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
