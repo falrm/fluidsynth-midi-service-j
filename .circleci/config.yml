@@ -12,17 +12,6 @@ jobs:
       - run:
           name: Git nonsense
           command: git config --global user.email "ci@beatscratch.io" && git config --global user.name "CI testing"
-      - run:
-          name: Install dependencies
-          command: sudo apt-get update && sudo apt-get install autotools-dev automake autoconf libtool g++ autopoint make cmake
-                   bison flex yasm pkg-config gtk-doc-tools libxv-dev libx11-dev libpulse-dev
-                   python3-dev texinfo gettext build-essential pkg-config doxygen curl libxext-dev
-                   libxi-dev x11proto-record-dev libxrender-dev libgl1-mesa-dev libxfixes-dev
-                   libxdamage-dev libxcomposite-dev libasound2-dev libxml-simple-perl dpkg-dev
-                   debhelper build-essential devscripts fakeroot transfig gperf libdbus-glib-1-dev
-                   wget glib-networking libxtst-dev libxrandr-dev libglu1-mesa-dev libegl1-mesa-dev
-                   git subversion xutils-dev intltool ccache python3-setuptools autogen maven
-      - checkout
       - android/install-ndk:
           ndk-version: android-ndk-r18b
           ndk-sha: 500679655da3a86aecf67007e8ab230ea9b4dd7b
@@ -49,7 +38,17 @@ jobs:
           name: Test path
           command: |
             arm-linux-androideabi-ar
-
+      - run:
+          name: Install FluidSynth build dependencies
+          command: sudo apt-get update && sudo apt-get install autotools-dev automake autoconf libtool g++ autopoint make cmake
+            bison flex yasm pkg-config gtk-doc-tools libxv-dev libx11-dev libpulse-dev
+            python3-dev texinfo gettext build-essential pkg-config doxygen curl libxext-dev
+            libxi-dev x11proto-record-dev libxrender-dev libgl1-mesa-dev libxfixes-dev
+            libxdamage-dev libxcomposite-dev libasound2-dev libxml-simple-perl dpkg-dev
+            debhelper build-essential devscripts fakeroot transfig gperf libdbus-glib-1-dev
+            wget glib-networking libxtst-dev libxrandr-dev libglu1-mesa-dev libegl1-mesa-dev
+            git subversion xutils-dev intltool ccache python3-setuptools autogen maven
+      - checkout
       - run:
           name: Clone submodules
           command: git submodule update --init --recursive
