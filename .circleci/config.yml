@@ -10,11 +10,16 @@ jobs:
       JVM_OPTS: -Xmx3200m
     steps:
       - run:
-          name: Git nonsense for Cerbero
+          name: Setup Git email and user for Cerbero
           command: git config --global user.email "ci@beatscratch.io" && git config --global user.name "CI testing"
       - android/install-ndk:
           ndk-version: android-ndk-r18b
           ndk-sha: 500679655da3a86aecf67007e8ab230ea9b4dd7b
+      - run:
+          name: Link NDK for Cerbero
+          command: |
+            mkdir -p /home/circleci/android-sdk-linux
+            ln -s /opt/android/android-ndk-r18b /home/circleci/android-sdk-linux/ndk-bundle
 #      - run: ls -R /opt/android
 #      - run:
 #          name: Setup path
