@@ -3,7 +3,7 @@
 
 JNAERATOR_JAR = ../external/JNAerator/jnaerator/target/jnaerator-0.13-SNAPSHOT-shaded.jar
 FL_INC = ../../external/fluidsynth/include/fluidsynth
-ANDROID_NDK = /opt/android/android-ndk-r17b
+ANDROID_NDK = /opt/android/android-ndk-r18b
 FL_ANDROID = ../external/fluidsynth/doc/android
 
 SF3 = src/main/assets/FluidR3Mono_GM.sf3

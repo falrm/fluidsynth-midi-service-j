@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/falrm/fluidsynth-midi-service-j/tree/master.svg?style=svg)](https://circleci.com/gh/falrm/fluidsynth-midi-service-j/tree/master)
+
 # What is this?
 
 It is an Android MIDI device service implementation based on [Fluidsynth software synthesizer](https://github.com/Fluidsynth/fluidsynth/). It comes with some sample dogfooding app UI.
@@ -36,6 +38,16 @@ More background can be found at https://dev.to/atsushieno/fluidsynth-20x-for-and
 ## Prebuilt binaries
 
 Beta packages are available at [DeployGate](https://dply.me/l0etkk).
+
+## CI builds
+
+Pretty complete build instructions, as well as where to get those binary artifacts
+to just throw into your `fluidsynthjna/src/main/jniLibs` are on CircleCI's latestest build 
+[![CircleCI](https://circleci.com/gh/falrm/fluidsynth-midi-service-j/tree/master.svg?style=svg)](https://circleci.com/gh/falrm/fluidsynth-midi-service-j/tree/master)
+
+
+[demo movie](docs/demo.mp4)
+
 
 
 ## Building
